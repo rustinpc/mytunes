@@ -2,6 +2,8 @@
 var SongQueue = Songs.extend({
 
   initialize: function(){
+    this.head = 0;
+    this.tail = 0;
   }
 
 });
