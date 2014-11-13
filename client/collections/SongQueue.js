@@ -6,15 +6,30 @@ var SongQueue = Songs.extend({
       if (this.length === 1) {
         this.playFirst();
       }
+      //this.model.render();
     });
 
-    this.on('ended', function() {
-      this.shift();
+
+    // this.on('ended', function() {
+    //   this.shift();
+    //   if (this.length > 0) {
+    //     this.playFirst();
+    //   }
+    // });
+
+    this.on('dequeue', function(song){
+      this.remove(song);
+      if(this.length > 0){
+        this.playFirst();
+      }
     });
+
   },
 
   playFirst: function(){
-    this.at(0).play();
+    if (this.length > 0) {
+      this.at(0).play();
+    }
   },
 
 
